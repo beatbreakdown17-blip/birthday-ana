@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<!-- saved from url=(0083)file:///C:/Users/User/Documents/Codex/2026-04-17-help-me-make-a-code-and/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Annanya</title>
+  <style>
+    :root {
+      --bg-top: #160824;
+      --bg-mid: #34124d;
+      --bg-bottom: #ff7b54;
+      --gold: #ffd76a;
+      --cream: #fff7ed;
+      --pink: #ff8fb1;
+      --blue: #7fd8ff;
+      --shadow: rgba(14, 7, 29, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.15), transparent 28%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bottom) 100%);
+    }
+
+    .sky {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .card {
+      width: min(92vw, 720px);
+      padding: 32px 28px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 28px;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
+      box-shadow: 0 24px 70px var(--shadow);
+    }
+
+    .screen {
+      display: none;
+      width: 100%;
+      place-items: center;
+    }
+
+    .screen.active {
+      display: grid;
+    }
+
+    .intro-card {
+      width: min(92vw, 520px);
+      padding: 34px 24px;
+    }
+
+    .intro-icon {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 28px;
+      font-size: 2.6rem;
+      background: linear-gradient(135deg, rgba(255, 215, 106, 0.28), rgba(255, 143, 177, 0.24));
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .eyebrow {
+      margin: 0;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: var(--gold);
+    }
+
+    h1 {
+      margin: 14px 0 12px;
+      font-size: clamp(2.4rem, 7vw, 4.8rem);
+      line-height: 0.95;
+      text-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .name {
+      color: var(--gold);
+      display: inline-block;
+    }
+
+    .message {
+      max-width: 540px;
+      margin: 0 auto 26px;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      line-height: 1.7;
+      color: rgba(255, 247, 237, 0.95);
+    }
+
+    .note {
+      max-width: 560px;
+      margin: 0 auto 24px;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: rgba(255, 247, 237, 0.98);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 15px 24px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .surprise-btn {
+      color: #351042;
+      background: linear-gradient(135deg, var(--gold), #fff0ae);
+      box-shadow: 0 14px 30px rgba(255, 215, 106, 0.35);
+    }
+
+    .replay-btn {
+      color: var(--cream);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .enter-btn {
+      color: #351042;
+      background: linear-gradient(135deg, #ffe5a3, #ffd76a);
+      box-shadow: 0 16px 34px rgba(255, 215, 106, 0.28);
+    }
+
+    .status {
+      margin-top: 18px;
+      min-height: 1.5em;
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .cake {
+      position: relative;
+      width: 220px;
+      height: 180px;
+      margin: 18px auto 26px;
+    }
+
+    .plate {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      height: 18px;
+      border-radius: 999px;
+      background: #ffe4f0;
+      box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    .layer-bottom,
+    .layer-top {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 18px;
+    }
+
+    .layer-bottom {
+      bottom: 20px;
+      width: 180px;
+      height: 72px;
+      background: linear-gradient(180deg, #ffb0c6, #ff7fa4);
+      box-shadow: inset 0 -8px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .layer-top {
+      bottom: 78px;
+      width: 132px;
+      height: 56px;
+      background: linear-gradient(180deg, #ffd8a1, #ffb85f);
+      box-shadow: inset 0 -6px 0 rgba(255, 255, 255, 0.18);
+    }
+
+    .icing {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff5fb;
+      border-radius: 18px 18px 12px 12px;
+    }
+
+    .icing.top {
+      bottom: 116px;
+      width: 138px;
+      height: 16px;
+    }
+
+    .icing.bottom {
+      bottom: 84px;
+      width: 188px;
+      height: 18px;
+    }
+
+    .candle {
+      position: absolute;
+      bottom: 130px;
+      left: 50%;
+      width: 14px;
+      height: 42px;
+      transform: translateX(-50%);
+      border-radius: 8px;
+      background: repeating-linear-gradient(
+        45deg,
+        #7fd8ff 0,
+        #7fd8ff 8px,
+        #ffffff 8px,
+        #ffffff 16px
+      );
+    }
+
+    .flame {
+      position: absolute;
+      left: 50%;
+      bottom: 170px;
+      width: 18px;
+      height: 28px;
+      transform: translateX(-50%);
+      border-radius: 50% 50% 50% 50%;
+      background: radial-gradient(circle at 50% 35%, #fff4b5 0 20%, #ffcc54 35%, #ff7b36 65%, rgba(255, 123, 54, 0.1) 100%);
+      filter: blur(0.4px);
+      animation: flicker 0.9s ease-in-out infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.08) translateY(-2px); }
+    }
+
+    canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -140px;
+      width: 44px;
+      height: 58px;
+      border-radius: 50%;
+      opacity: 0.82;
+      animation: floatUp linear infinite;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 56px;
+      width: 2px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.55);
+      transform: translateX(-50%);
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); }
+      to { transform: translateY(-130vh); }
+    }
+
+    @media (max-width: 620px) {
+      .card {
+        padding: 26px 18px;
+      }
+
+      .message {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sky" id="sky"><span class="star" style="left: 56.8741%; top: 5.36166%; animation-delay: 1.67191s; opacity: 0.545836;"></span><span class="star" style="left: 21.0154%; top: 12.1852%; animation-delay: 1.5467s; opacity: 0.684724;"></span><span class="star" style="left: 18.9357%; top: 49.3145%; animation-delay: 2.31923s; opacity: 0.731206;"></span><span class="star" style="left: 63.4814%; top: 34.6079%; animation-delay: 1.89798s; opacity: 0.592864;"></span><span class="star" style="left: 44.1479%; top: 52.8237%; animation-delay: 2.07235s; opacity: 0.737264;"></span><span class="star" style="left: 78.5496%; top: 17.8599%; animation-delay: 0.230054s; opacity: 0.346914;"></span><span class="star" style="left: 79.2526%; top: 8.64289%; animation-delay: 0.35093s; opacity: 0.766347;"></span><span class="star" style="left: 27.7669%; top: 45.0525%; animation-delay: 2.0733s; opacity: 0.856759;"></span><span class="star" style="left: 91.8842%; top: 53.0945%; animation-delay: 2.44338s; opacity: 0.902856;"></span><span class="star" style="left: 7.53537%; top: 16.8946%; animation-delay: 0.0108929s; opacity: 0.451741;"></span><span class="star" style="left: 35.2127%; top: 37.1079%; animation-delay: 2.28182s; opacity: 0.727406;"></span><span class="star" style="left: 74.6096%; top: 36.5895%; animation-delay: 0.963173s; opacity: 0.792325;"></span><span class="star" style="left: 89.0124%; top: 37.5222%; animation-delay: 1.5424s; opacity: 0.937155;"></span><span class="star" style="left: 97.5004%; top: 34.6406%; animation-delay: 1.70918s; opacity: 0.915431;"></span><span class="star" style="left: 63.0025%; top: 0.248005%; animation-delay: 0.107085s; opacity: 0.991304;"></span><span class="star" style="left: 22.9906%; top: 21.473%; animation-delay: 2.7949s; opacity: 0.794749;"></span><span class="star" style="left: 98.4718%; top: 54.2416%; animation-delay: 2.74407s; opacity: 0.449661;"></span><span class="star" style="left: 80.2712%; top: 13.6731%; animation-delay: 2.95049s; opacity: 0.983296;"></span><span class="star" style="left: 48.85%; top: 21.6759%; animation-delay: 0.128541s; opacity: 0.419173;"></span><span class="star" style="left: 44.4851%; top: 52.738%; animation-delay: 2.44173s; opacity: 0.982373;"></span><span class="star" style="left: 72.8472%; top: 31.9338%; animation-delay: 0.597382s; opacity: 0.553242;"></span><span class="star" style="left: 37.1354%; top: 9.61468%; animation-delay: 0.667646s; opacity: 0.716772;"></span><span class="star" style="left: 15.745%; top: 1.05616%; animation-delay: 1.91928s; opacity: 0.864958;"></span><span class="star" style="left: 29.102%; top: 24.4712%; animation-delay: 1.41293s; opacity: 0.533574;"></span><span class="star" style="left: 32.241%; top: 37.5694%; animation-delay: 2.78925s; opacity: 0.666878;"></span><span class="star" style="left: 0.666981%; top: 42.76%; animation-delay: 2.94681s; opacity: 0.667559;"></span><span class="star" style="left: 93.2905%; top: 51.7132%; animation-delay: 2.27221s; opacity: 0.937173;"></span><span class="star" style="left: 40.2494%; top: 27.5267%; animation-delay: 1.07547s; opacity: 0.993039;"></span><span class="star" style="left: 70.1427%; top: 50.7456%; animation-delay: 2.01869s; opacity: 0.868609;"></span><span class="star" style="left: 49.6068%; top: 17.7593%; animation-delay: 0.831955s; opacity: 0.863487;"></span><span class="star" style="left: 8.61097%; top: 28.5238%; animation-delay: 0.678547s; opacity: 0.421345;"></span><span class="star" style="left: 41.7859%; top: 23.7968%; animation-delay: 1.01908s; opacity: 0.339381;"></span><span class="star" style="left: 45.9166%; top: 25.0158%; animation-delay: 0.693193s; opacity: 0.588397;"></span><span class="star" style="left: 73.9231%; top: 44.865%; animation-delay: 0.0513518s; opacity: 0.737169;"></span><span class="star" style="left: 32.4322%; top: 11.5468%; animation-delay: 0.643984s; opacity: 0.614941;"></span><span class="star" style="left: 3.8625%; top: 40.7129%; animation-delay: 1.50952s; opacity: 0.329772;"></span><span class="balloon" style="left: 49.4729%; background: rgb(255, 215, 106); animation-duration: 23.7999s; animation-delay: 1.24653s;"></span><span class="balloon" style="left: 14.019%; background: rgb(255, 143, 177); animation-duration: 18.5098s; animation-delay: 2.07398s;"></span><span class="balloon" style="left: 35.8843%; background: rgb(127, 216, 255); animation-duration: 18.5853s; animation-delay: 5.71804s;"></span><span class="balloon" style="left: 14.5199%; background: rgb(255, 255, 255); animation-duration: 21.3567s; animation-delay: 7.89113s;"></span><span class="balloon" style="left: 47.2104%; background: rgb(255, 155, 113); animation-duration: 17.9136s; animation-delay: 5.21949s;"></span><span class="balloon" style="left: 67.4387%; background: rgb(184, 255, 116); animation-duration: 23.0181s; animation-delay: 6.13389s;"></span><span class="balloon" style="left: 34.0499%; background: rgb(255, 215, 106); animation-duration: 20.3256s; animation-delay: 3.27022s;"></span><span class="balloon" style="left: 13.5848%; background: rgb(255, 143, 177); animation-duration: 15.5424s; animation-delay: 3.18778s;"></span><span class="balloon" style="left: 94.6566%; background: rgb(127, 216, 255); animation-duration: 18.35s; animation-delay: 2.52104s;"></span><span class="balloon" style="left: 10.2612%; background: rgb(255, 255, 255); animation-duration: 22.1252s; animation-delay: 5.11435s;"></span></div>
+  <canvas id="fireworks" width="1536" height="703"></canvas>
+
+  <div class="wrap">
+    <section class="screen active" id="introScreen">
+      <div class="card intro-card">
+        <div class="intro-icon" aria-hidden="true">🎁</div>
+        <p class="eyebrow">For Annanya</p>
+        <h1>A Little Birthday Surprise</h1>
+        <p class="message">
+          Someone special has sent you a birthday surprise. Tap the button below to open your celebration screen.
+        </p>
+        <div class="button-row">
+          <button class="enter-btn" id="enterBtn">Open Surprise</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="surpriseScreen">
+      <div class="card">
+        <p class="eyebrow">A Birthday Surprise</p>
+        <h1>Happy Birthday <span class="name">Annanya</span>!</h1>
+
+        <div class="cake" aria-hidden="true">
+          <div class="flame"></div>
+          <div class="candle"></div>
+          <div class="icing top"></div>
+          <div class="layer-top"></div>
+          <div class="icing bottom"></div>
+          <div class="layer-bottom"></div>
+          <div class="plate"></div>
+        </div>
+
+        <p class="note">
+          Dear Annanya, may your birthday be full of joy, sweet moments, big dreams, and beautiful memories.
+          You deserve a day filled with love, smiles, and happiness from beginning to end.
+        </p>
+
+        <p class="message">
+          Your surprise is now open with fireworks and a special Happy Birthday tune just for you.
+        </p>
+
+        <div class="button-row">
+          <button class="surprise-btn" id="surpriseBtn">Play Surprise Again</button>
+          <button class="replay-btn" id="replayBtn">Play Song Again</button>
+        </div>
+
+        <p class="status" id="status">Tap the button to start the birthday magic.</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const sky = document.getElementById("sky");
+    const canvas = document.getElementById("fireworks");
+    const ctx = canvas.getContext("2d");
+    const introScreen = document.getElementById("introScreen");
+    const surpriseScreen = document.getElementById("surpriseScreen");
+    const enterBtn = document.getElementById("enterBtn");
+    const statusEl = document.getElementById("status");
+    const surpriseBtn = document.getElementById("surpriseBtn");
+    const replayBtn = document.getElementById("replayBtn");
+
+    const colors = ["#ffd76a", "#ff8fb1", "#7fd8ff", "#ffffff", "#ff9b71", "#b8ff74"];
+    const particles = [];
+    let animationId = null;
+    let fireworksRunning = false;
+    let audioContext;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+      const count = 36;
+      sky.innerHTML = "";
+      for (let i = 0; i < count; i += 1) {
+        const star = document.createElement("span");
+        star.className = "star";
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 55}%`;
+        star.style.animationDelay = `${Math.random() * 3}s`;
+        star.style.opacity = String(0.3 + Math.random() * 0.7);
+        sky.appendChild(star);
+      }
+    }
+
+    function createBalloons() {
+      for (let i = 0; i < 10; i += 1) {
+        const balloon = document.createElement("span");
+        balloon.className = "balloon";
+        balloon.style.left = `${Math.random() * 100}%`;
+        balloon.style.background = colors[i % colors.length];
+        balloon.style.animationDuration = `${14 + Math.random() * 10}s`;
+        balloon.style.animationDelay = `${Math.random() * 8}s`;
+        sky.appendChild(balloon);
+      }
+    }
+
+    function randomBetween(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function burst(x, y) {
+      const count = 80;
+      for (let i = 0; i < count; i += 1) {
+        const angle = (Math.PI * 2 * i) / count;
+        const speed = randomBetween(1.5, 5.8);
+        particles.push({
+          x,
+          y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          alpha: 1,
+          size: randomBetween(1.5, 3.6),
+          color: colors[Math.floor(Math.random() * colors.length)]
+        });
+      }
+    }
+
+    function animateFireworks() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "rgba(10, 6, 20, 0.18)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = particles.length - 1; i >= 0; i -= 1) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.03;
+        p.alpha -= 0.012;
+
+        if (p.alpha <= 0) {
+          particles.splice(i, 1);
+          continue;
+        }
+
+        ctx.globalAlpha = Math.max(p.alpha, 0);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+      }
+
+      ctx.globalAlpha = 1;
+      if (fireworksRunning || particles.length > 0) {
+        animationId = requestAnimationFrame(animateFireworks);
+      } else {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    function launchFireworks() {
+      fireworksRunning = true;
+      if (!animationId) {
+        animateFireworks();
+      }
+
+      const bursts = 8;
+      for (let i = 0; i < bursts; i += 1) {
+        window.setTimeout(() => {
+          burst(
+            randomBetween(canvas.width * 0.15, canvas.width * 0.85),
+            randomBetween(canvas.height * 0.12, canvas.height * 0.58)
+          );
+        }, i * 350);
+      }
+
+      window.setTimeout(() => {
+        fireworksRunning = false;
+      }, 3800);
+    }
+
+    function getAudioContext() {
+      if (!audioContext) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        audioContext = new AudioContextClass();
+      }
+      return audioContext;
+    }
+
+    function playNote(ctxAudio, frequency, startTime, duration) {
+      const oscillator = ctxAudio.createOscillator();
+      const gainNode = ctxAudio.createGain();
+
+      oscillator.type = "triangle";
+      oscillator.frequency.value = frequency;
+      gainNode.gain.setValueAtTime(0.0001, startTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.14, startTime + 0.02);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+      oscillator.connect(gainNode);
+      gainNode.connect(ctxAudio.destination);
+      oscillator.start(startTime);
+      oscillator.stop(startTime + duration + 0.04);
+    }
+
+    async function playSong() {
+      const ctxAudio = getAudioContext();
+      if (ctxAudio.state === "suspended") {
+        await ctxAudio.resume();
+      }
+
+      const now = ctxAudio.currentTime + 0.08;
+      const notes = [
+        ["G4", 0.36], ["G4", 0.22], ["A4", 0.56], ["G4", 0.56], ["C5", 0.56], ["B4", 0.92],
+        ["G4", 0.36], ["G4", 0.22], ["A4", 0.56], ["G4", 0.56], ["D5", 0.56], ["C5", 0.92],
+        ["G4", 0.36], ["G4", 0.22], ["G5", 0.56], ["E5", 0.56], ["C5", 0.56], ["B4", 0.56], ["A4", 0.92],
+        ["F5", 0.36], ["F5", 0.22], ["E5", 0.56], ["C5", 0.56], ["D5", 0.56], ["C5", 1.1]
+      ];
+
+      const frequencies = {
+        G4: 392.0,
+        A4: 440.0,
+        B4: 493.88,
+        C5: 523.25,
+        D5: 587.33,
+        E5: 659.25,
+        F5: 698.46,
+        G5: 783.99
+      };
+
+      let cursor = now;
+      for (const [note, duration] of notes) {
+        playNote(ctxAudio, frequencies[note], cursor, duration * 0.9);
+        cursor += duration;
+      }
+    }
+
+    async function runSurprise() {
+      statusEl.textContent = "Fireworks launched and the instrumental birthday song is playing for Annanya.";
+      launchFireworks();
+      await playSong();
+    }
+
+    function showSurpriseScreen() {
+      introScreen.classList.remove("active");
+      surpriseScreen.classList.add("active");
+    }
+
+    enterBtn.addEventListener("click", () => {
+      showSurpriseScreen();
+      runSurprise().catch(() => {
+        statusEl.textContent = "Tap Play Surprise Again if the audio did not start the first time.";
+      });
+    });
+
+    surpriseBtn.addEventListener("click", () => {
+      runSurprise().catch(() => {
+        statusEl.textContent = "Tap again if your browser blocked the audio the first time.";
+      });
+    });
+
+    replayBtn.addEventListener("click", () => {
+      statusEl.textContent = "Playing the Happy Birthday tune again.";
+      playSong().catch(() => {
+        statusEl.textContent = "Audio is waiting for a fresh click.";
+      });
+    });
+
+    window.addEventListener("resize", resizeCanvas);
+
+    resizeCanvas();
+    createStars();
+    createBalloons();
+  </script>
+
+
+</body></html>
